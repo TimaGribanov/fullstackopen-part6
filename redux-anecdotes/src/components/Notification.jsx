@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 
 const Notification = () => {
   const notification = useSelector(state => {
-    if (state.notification.id !== '') {
+    if (state.notification !== undefined) {
       switch (state.notification.action) {
         case 'VOTE': {
           const anecdoteToShow = state.anecdotes.find(({ id }) => id === state.notification.value)
