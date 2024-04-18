@@ -22,4 +22,23 @@ const notificationSlice = createSlice({
 })
 
 export const { votedNotification, addedNotification, removeNotification } = notificationSlice.actions
+
+export const notificationAdded = (content, timeout) => {
+  return dispatch => {
+    dispatch(addedNotification(content))
+    setTimeout(() => {
+      dispatch(removeNotification())
+    }, timeout)
+  }
+}
+
+export const notificationVoted = (id, timeout) => {
+  return dispatch => {
+    dispatch(votedNotification(id))
+    setTimeout(() => {
+      dispatch(removeNotification())
+    }, timeout)
+  }
+}
+
 export default notificationSlice.reducer
